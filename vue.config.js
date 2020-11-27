@@ -6,7 +6,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || '小区管理系统' // page title
+const name = defaultSettings.title || '量化管理系统' // page title
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -38,7 +38,7 @@ module.exports = {
     },
     proxy: {
       '/api': {
-        target: `http://127.0.0.1:9001/ad`,
+        target: `http://127.0.0.1:8080/`,
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

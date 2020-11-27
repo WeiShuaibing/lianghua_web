@@ -69,7 +69,7 @@ export default {
     }
   },
   mounted() {
-    this.getBaseData()
+    // this.getBaseData()
   },
   methods: {
     getBaseData() {

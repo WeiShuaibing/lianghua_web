@@ -1,5 +1,5 @@
 module.exports = {
-  title: '小区管理系统',
+  title: '量化管理系统',
 
   /**
    * @type {boolean} true | false

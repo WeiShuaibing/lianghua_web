@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">小区管理员端</h3>
+        <h3 class="title">量化管理系统</h3>
       </div>
 
       <el-form-item prop="username">
@@ -44,12 +44,6 @@
           </span>
         </el-form-item>
       </el-tooltip>
-      <div style="margin-bottom: 10px">
-        <el-radio-group @change="rolesChange" v-model="userRole">
-          <el-radio :label="1">管理员</el-radio>
-          <el-radio :label="2">用户</el-radio>
-        </el-radio-group>
-      </div>
       <el-button
         :loading="loading"
         type="primary"
@@ -79,8 +73,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: '88888888888',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       passwordType: 'password',
       capsTooltip: false,
@@ -117,11 +111,6 @@ export default {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
-    rolesChange(value) {
-      if (value === 2) {
-        window.location.href = 'http://localhost:8999'
-      }
-    },
     checkCapslock({ shiftKey, key } = {}) {
       if (key && key.length === 1) {
         if (shiftKey && (key >= 'a' && key <= 'z') || !shiftKey && (key >= 'A' && key <= 'Z')) {

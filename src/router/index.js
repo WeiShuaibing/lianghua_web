@@ -5,6 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
+import fa from 'element-ui/src/locale/lang/fa'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -98,202 +99,46 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-// 物业人员管理
   {
-    path: '/admin',
+    path: '/scoring',
     component: Layout,
+    redirect: '/scoring/index',
     hidden: false,
     children: [
       {
-        path: '/index',
-        component: () => import('@/views/admin/index'),
-        name: 'AdminIndex',
-        meta: { title: '物业人员管理', noCache: true, icon: 'wuye' }
+        path: 'index',
+        component: () => import('@/views/scoring/index'),
+        name: 'ScoringIndex',
+        meta: { title: '计分项管理', icon: 'skill', noCache: true }
       }
     ]
-  },
-  // 楼房管理
-  {
-    path: '/building',
+  }, {
+    path: '/course',
     component: Layout,
+    redirect: '/course/index',
     hidden: false,
     children: [
       {
-        path: '/building',
-        component: () => import('@/views/building/index'),
-        name: 'BuildingIndex',
-        meta: { title: '楼房管理', noCache: true, icon: 'building' }
+        path: 'index',
+        component: () => import('@/views/course/index'),
+        name: 'ScoringIndex',
+        meta: { title: '课程管理', icon: 'skill', noCache: true }
       }
     ]
-  },
-  // 用户管理
-  {
-    path: '/webuser',
+  }, {
+    path: '/class',
     component: Layout,
+    redirect: '/class/index',
     hidden: false,
     children: [
       {
-        path: '/webuser',
-        component: () => import('@/views/webuser/index'),
-        name: 'WebuserIndex',
-        meta: { title: '用户管理', noCache: true, icon: 'people' }
+        path: 'index',
+        component: () => import('@/views/class/index'),
+        name: 'ClassIndex',
+        meta: { title: '班级管理', icon: 'skill', noCache: true }
       }
     ]
   },
-  // 停车位管理
-  {
-    path: '/carposition',
-    component: Layout,
-    hidden: false,
-    children: [
-      {
-        path: '/carposition',
-        component: () => import('@/views/carposition/index'),
-        name: 'CarPositionIndex',
-        meta: { title: '停车位', noCache: true, icon: 'car' }
-      }
-    ]
-  },
-  // 物业缴费
-  {
-    path: '/pay',
-    component: Layout,
-    hidden: false,
-    children: [
-      {
-        path: '/pay',
-        component: () => import('@/views/pay/index'),
-        name: 'PayIndex',
-        meta: { title: '物业缴费', noCache: true, icon: 'pay' }
-      }
-    ]
-  },
-  // 公告管理
-  {
-    path: '/gonggao',
-    component: Layout,
-    hidden: false,
-    children: [
-      {
-        path: '/gonggao',
-        component: () => import('@/views/gonggao/index'),
-        name: 'GongGaoIndex',
-        meta: { title: '公告管理', noCache: true, icon: 'gonggao' }
-      }
-    ]
-  },
-  // 投诉建议管理
-  {
-    path: '/suggestion',
-    component: Layout,
-    hidden: false,
-    meta: {
-      title: '投诉建议',
-      icon: 'suggestion',
-      roles: ['admin']
-    },
-    children: [
-      {
-        path: '/suggestionIndex',
-        component: () => import('@/views/suggestion/index'),
-        name: 'SuggestionIndex',
-        meta: { title: '投诉建议', noCache: true, icon: 'suggestion' }
-      }
-    ]
-  },
-  // 投诉建议管理
-  {
-    path: '/suggestion_edit',
-    component: Layout,
-    meta: {
-      title: '投诉建议',
-      icon: 'suggestion',
-      roles: ['editor']
-    },
-    children: [
-      {
-        path: 'suggestionEdit',
-        component: () => import('@/views/suggestion_edit/index'),
-        name: 'SuggestionEditIndex',
-        meta: {
-          title: '投诉建议',
-          icon: 'suggestion',
-          noCache: true,
-          roles: ['editor'] // or you can only set roles in sub nav
-        }
-      }
-    ]
-  },
-  // 报修
-  {
-    path: '/repair',
-    component: Layout,
-    hidden: false,
-    meta: {
-      title: '报修管理',
-      icon: 'suggestion',
-      roles: ['admin']
-    },
-    children: [
-      {
-        path: '/repair',
-        component: () => import('@/views/repair/index'),
-        name: 'RepairIndex',
-        meta: { title: '报修管理', noCache: true, icon: 'repair' }
-      }
-    ]
-  },
-  {
-    path: '/repair_edit',
-    component: Layout,
-    meta: {
-      title: '报修管理',
-      icon: 'suggestion',
-      roles: ['editor']
-    },
-    children: [
-      {
-        path: 'repairEdit',
-        component: () => import('@/views/repair_edit/index'),
-        name: 'repairEditIndex',
-        meta: {
-          title: '报修管理',
-          icon: 'repair',
-          noCache: true,
-          roles: ['editor'] // or you can only set roles in sub nav
-        }
-      }
-    ]
-  },
-  // 系统管理
-  {
-    path: '/system',
-    component: Layout,
-    hidden: false,
-    children: [
-      {
-        path: '/system',
-        component: () => import('@/views/system/index'),
-        name: 'SystemIndex',
-        meta: { title: '系统管理', noCache: true, icon: 'system' }
-      }
-    ]
-  },
-  // 系统管理
-  {
-    path: '/log',
-    component: Layout,
-    hidden: false,
-    children: [
-      {
-        path: '/log',
-        component: () => import('@/views/log/index'),
-        name: 'LogIndex',
-        meta: { title: '操作日志', noCache: true, icon: 'log' }
-      }
-    ]
-  },
-
   {
     path: '/error',
     component: Layout,
