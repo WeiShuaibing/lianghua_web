@@ -41,3 +41,10 @@ export function getCourseOfClassId(id) {
     }
   })
 }
+export function getAllCourseWithFormat() {
+  return request({
+    url: BASE_URL + 'course/getAllCourseWithFormat',
+    method: 'GET'
+  })
+}
+

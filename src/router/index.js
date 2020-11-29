@@ -5,7 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
-import fa from 'element-ui/src/locale/lang/fa'
+// import fa from 'element-ui/src/locale/lang/fa'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -109,7 +109,7 @@ export const asyncRoutes = [
         path: 'index',
         component: () => import('@/views/scoring/index'),
         name: 'ScoringIndex',
-        meta: { title: '计分项管理', icon: 'skill', noCache: true }
+        meta: { title: '计分项管理', icon: 'skill', noCache: true, roles: ['admin'] }
       }
     ]
   }, {
@@ -122,7 +122,7 @@ export const asyncRoutes = [
         path: 'index',
         component: () => import('@/views/course/index'),
         name: 'ScoringIndex',
-        meta: { title: '课程管理', icon: 'skill', noCache: true }
+        meta: { title: '课程管理', icon: 'skill', noCache: true, roles: ['admin'] }
       }
     ]
   }, {
@@ -135,7 +135,53 @@ export const asyncRoutes = [
         path: 'index',
         component: () => import('@/views/class/index'),
         name: 'ClassIndex',
-        meta: { title: '班级管理', icon: 'skill', noCache: true }
+        meta: { title: '班级管理', icon: 'skill', noCache: true, roles: ['admin'] }
+      }
+    ]
+  }, {
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/index',
+    hidden: false,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/teacher/index'),
+        name: 'TeacherIndex',
+        meta: { title: '教师管理', icon: 'skill', noCache: true, roles: ['admin'] }
+      }
+    ]
+  }, {
+    path: '/student',
+    component: Layout,
+    redirect: '/student/index',
+    hidden: false,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/student/index'),
+        name: 'StudentIndex',
+        meta: { title: '学生管理', icon: 'skill', noCache: true, roles: ['admin'] }
+      }
+    ]
+  },
+  {
+    path: '/teacher/course',
+    component: Layout,
+    redirect: '/teacher/course/index',
+    hidden: false,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/teacherManager/course/index'),
+        name: 'StudentIndex',
+        meta: { title: '我的课程', icon: 'skill', noCache: true, roles: ['teacher'] }
+      },
+      {
+        path: 'ScoreIndex',
+        component: () => import('@/views/teacherManager/course/score'),
+        name: 'StudentIndex',
+        meta: { title: '学生成绩', icon: 'skill', noCache: true, roles: ['teacher'] }
       }
     ]
   },
