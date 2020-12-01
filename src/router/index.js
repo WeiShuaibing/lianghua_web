@@ -179,9 +179,59 @@ export const asyncRoutes = [
       },
       {
         path: 'ScoreIndex',
+        hidden: true,
         component: () => import('@/views/teacherManager/course/score'),
         name: 'StudentIndex',
         meta: { title: '学生成绩', icon: 'skill', noCache: true, roles: ['teacher'] }
+      },
+      {
+        path: 'ScoreLog',
+        hidden: true,
+        component: () => import('@/views/teacherManager/course/scoreLog'),
+        name: 'ScoreLog',
+        meta: { title: '成绩日志', icon: 'skill', noCache: true, roles: ['teacher'] }
+      }
+    ]
+  },
+  {
+    path: '/message',
+    component: Layout,
+    redirect: '/teacher/message/index',
+    hidden: false,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/teacherManager/message/index'),
+        name: 'StudentIndex',
+        meta: { title: '留言管理', icon: 'message', noCache: true, roles: ['teacher'] }
+      }
+    ]
+  },
+  {
+    path: '/studentScore',
+    component: Layout,
+    redirect: '/student/score/index',
+    hidden: false,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/studentManager/myscore'),
+        name: 'StudentScore',
+        meta: { title: '我的成绩', icon: 'skill', noCache: true, roles: ['student'] }
+      }
+    ]
+  },
+  {
+    path: '/studentMessage',
+    component: Layout,
+    redirect: '/student/message/index',
+    hidden: false,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/studentManager/message'),
+        name: 'StudentMessage',
+        meta: { title: '留言', icon: 'message', noCache: true, roles: ['student'] }
       }
     ]
   },

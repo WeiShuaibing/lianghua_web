@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <h2>教师端课程管理</h2>
+    <h2>课程管理</h2>
     <el-row>
       <el-table :data="tableData" stripe style="width: 100%">
         <!--        <el-table-column prop="courseId" label="courseId" width="280" />-->
@@ -17,13 +17,13 @@
         <el-table-column label="操作" width="300">
           <template slot-scope="scope">
             <el-button type="primary" size="small" icon="el-icon-edit" @click="ednitJiFenXiang(scope.row)">计分项</el-button>
-            <el-button type="success" size="small" @click="ednitJiFenXiang(scope.row)">成绩管理</el-button>
+            <el-button type="success" size="small" @click="toScoreManager(scope.row)">成绩管理</el-button>
           </template>
         </el-table-column>
       </el-table>
     </el-row>
 
-    <!--新增对话框-->
+    <!--计分项修改对话框-->
     <div>
       <el-dialog title="计分项修改" :visible.sync="jiFenXiangVisible">
         <div style="width: 70%;margin: 0 auto;">
@@ -92,6 +92,8 @@ export default {
       this.editScoringInfo = {}
       this.jiFenXiangVisible = true
       this.editClasCourseRelId = row.classCourseRel
+    },
+    toScoreManager(row) {
       // 跳转到成绩管理页面
       this.$router.push({ path: '/teacher/course/ScoreIndex', query: { classId: row.classId, courseId: row.courseId, classCourseRel: row.classCourseRel }})
     },

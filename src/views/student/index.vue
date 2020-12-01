@@ -18,7 +18,6 @@
         </el-upload>
       </el-col>
       <el-col :span="2">
-        <!--        <el-button type="warning" icon="el-icon-download" @click="exportData">导出</el-button>-->
         <xlsx-workbook>
           <xlsx-sheet
             v-for="sheet in sheets"
@@ -42,6 +41,7 @@
         <el-table-column prop="stuId" label="ID" width="100" />
         <el-table-column prop="name" label="姓名" />
         <el-table-column prop="className" label="所属班级" />
+        <el-table-column prop="phone" label="手机" />
         <el-table-column prop="age" label="年龄" />
         <el-table-column prop="sex" label="性别" />
         <el-table-column prop="remark" label="备注" />
@@ -97,6 +97,10 @@
             </el-col>
           </el-row>
           <el-row style="margin-top: 20px;">
+            <el-col :span="4"> <span style="line-height: 2">手机：</span></el-col>
+            <el-col :span="18"><el-input v-model="student.phone" maxlength="11" placeholder="请输入..." /></el-col>
+          </el-row>
+          <el-row style="margin-top: 20px;">
             <el-col :span="4"> <span style="line-height: 2">备注：</span></el-col>
             <el-col :span="18"><el-input v-model="student.remark" type="textarea" :rows="2" placeholder="请输入..." /></el-col>
           </el-row>
@@ -130,8 +134,7 @@ export default {
   components: { XlsxDownload, XlsxWorkbook, XlsxSheet },
   data() {
     return {
-      sheetName: null,
-      sheets: [{ name: '学生信息', data: [{ c: 2 }] }],
+      sheets: [{ name: '学生信息' }],
       tableData: [],
       allClass: [],
       allCourseOfClass: [],
@@ -142,6 +145,8 @@ export default {
         name: '',
         age: null,
         sex: '男',
+        phone: '',
+        password: '',
         remark: '',
         classId: null,
         className: ''
@@ -156,9 +161,6 @@ export default {
     this.getAllClassData()
   },
   methods: {
-    exportData(wb) {
-      console.log(wb)
-    },
     batchImport(file) {
       var _this = this
       _this.file2Xce(file).then(item => {
@@ -190,13 +192,6 @@ export default {
       saveStudent(this.student).then(res => {
         this.addVisible = false
         this.isEdit = false
-        // 清空填写的属性值
-        /* this.student.name = ''
-        this.student.age = null
-        this.student.sex = ''
-        this.student.remark = ''
-        this.student.classId = null
-        this.student.className = ''*/
       })
     },
     deleteStudent(id) {
@@ -214,10 +209,11 @@ export default {
     },
     saveNewStudent() {
       if (this.student.name === '' || this.student.age === null || this.student.sex === '' ||
-      this.student.classId === null) {
+      this.student.classId === null || this.student.phone === '') {
         this.$message.warning('请完善相关信息！')
         return
       }
+      this.student.password = this.$md5(this.student.phone)
       saveStudent(this.student).then(res => {
         this.addVisible = false
         this.getPage()
