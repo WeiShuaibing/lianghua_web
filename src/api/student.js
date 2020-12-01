@@ -52,3 +52,9 @@ export function getPageOfStudent(pageNum, pageSize, matchStr) {
     }
   })
 }
+export function getMyScore() {
+  return request({
+    url: BASE_URL + 'student/getMyScore',
+    method: 'GET'
+  })
+}
