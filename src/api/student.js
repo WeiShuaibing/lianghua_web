@@ -58,3 +58,9 @@ export function getMyScore() {
     method: 'GET'
   })
 }
+export function getAllMyTeacher() {
+  return request({
+    url: BASE_URL + 'student/getAllMyTeacher',
+    method: 'GET'
+  })
+}

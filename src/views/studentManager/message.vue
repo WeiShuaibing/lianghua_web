@@ -2,12 +2,12 @@
   <div class="app-container">
     <el-row style="margin-top: 30px;">
       <el-col :span="3">
-        <el-select v-model="value" placeholder="请选择老师">
+        <el-select v-model="selectTeacherId" placeholder="请选择老师">
           <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+            v-for="item in teachers"
+            :key="item.teaId"
+            :label="item.name"
+            :value="item.teaId"
           />
         </el-select>
       </el-col>
@@ -20,39 +20,47 @@
         />
       </el-col>
       <el-col :span="2" :offset="1">
-        <el-button type="primary">留言</el-button>
+        <el-button type="primary" @click="toSave">留言</el-button>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import { getAllMyTeacher } from '@/api/student'
+import { saveMessage, getAllMessage } from '@/api/message'
 export default {
   name: 'Message',
   data() {
     return {
       message: '',
-      options: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }]
+      teachers: [],
+      selectTeacherId: ''
     }
   },
   mounted() {
+    this.getTeachers()
   },
-  methods: {}
+  methods: {
+    getAll() {
+      getAllMessage().then(res => {
+      })
+    },
+    getTeachers() {
+      getAllMyTeacher().then(res => {
+        console.log(res.data)
+        this.teachers = res.data
+      })
+    },
+    toSave() {
+      saveMessage({
+        teaId: this.selectTeacherId,
+        message: this.message
+      }).then(res => {
+        console.log(res)
+      })
+    }
+  }
 }
 </script>
 
