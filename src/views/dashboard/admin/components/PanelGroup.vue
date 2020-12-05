@@ -1,58 +1,64 @@
 <template>
-  <el-row :gutter="40" class="panel-group">
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
-        <div class="card-panel-icon-wrapper icon-people">
-          <svg-icon icon-class="wuye" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            总管理员
+  <div>
+    <el-row>
+      <i style="font-size: 50px;font-weight: 600;line-height: 3;color: #409EFF;" class="el-icon-s-flag" />
+      <span style="font-size: 40px;font-weight: 600;line-height: 3">平时成绩量化系统</span>
+    </el-row>
+    <el-row :gutter="40" class="panel-group">
+      <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+        <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+          <div class="card-panel-icon-wrapper icon-people">
+            <svg-icon icon-class="wuye" class-name="card-panel-icon" />
           </div>
-          <count-to :start-val="0" :end-val="baseData.adminCount" :duration="2600" class="card-panel-num" />
-        </div>
-      </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('messages')">
-        <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon icon-class="peoples" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            总用户数
+          <div class="card-panel-description">
+            <div class="card-panel-text">
+              总学生数
+            </div>
+            <count-to :start-val="0" :end-val="baseData.studentTotal" :duration="2600" class="card-panel-num" />
           </div>
-          <count-to :start-val="0" :end-val="baseData.userCount" :duration="3000" class="card-panel-num" />
         </div>
-      </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('purchases')">
-        <div class="card-panel-icon-wrapper icon-money">
-          <svg-icon icon-class="building" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            总楼房数
+      </el-col>
+      <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+        <div class="card-panel" @click="handleSetLineChartData('messages')">
+          <div class="card-panel-icon-wrapper icon-message">
+            <svg-icon icon-class="peoples" class-name="card-panel-icon" />
           </div>
-          <count-to :start-val="0" :end-val="baseData.buildingCount" :duration="3200" class="card-panel-num" />
-        </div>
-      </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('shoppings')">
-        <div class="card-panel-icon-wrapper icon-shopping">
-          <svg-icon icon-class="car" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            总停车位
+          <div class="card-panel-description">
+            <div class="card-panel-text">
+              总教师数
+            </div>
+            <count-to :start-val="0" :end-val="baseData.teacherTotal" :duration="3000" class="card-panel-num" />
           </div>
-          <count-to :start-val="0" :end-val="baseData.carCount" :duration="3600" class="card-panel-num" />
         </div>
-      </div>
-    </el-col>
-  </el-row>
+      </el-col>
+      <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+        <div class="card-panel" @click="handleSetLineChartData('purchases')">
+          <div class="card-panel-icon-wrapper icon-money">
+            <svg-icon icon-class="building" class-name="card-panel-icon" />
+          </div>
+          <div class="card-panel-description">
+            <div class="card-panel-text">
+              总班级数
+            </div>
+            <count-to :start-val="0" :end-val="baseData.classTotal" :duration="3200" class="card-panel-num" />
+          </div>
+        </div>
+      </el-col>
+      <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+        <div class="card-panel" @click="handleSetLineChartData('shoppings')">
+          <div class="card-panel-icon-wrapper icon-shopping">
+            <svg-icon icon-class="car" class-name="card-panel-icon" />
+          </div>
+          <div class="card-panel-description">
+            <div class="card-panel-text">
+              总课程数
+            </div>
+            <count-to :start-val="0" :end-val="baseData.courseTotal" :duration="3600" class="card-panel-num" />
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -69,7 +75,7 @@ export default {
     }
   },
   mounted() {
-    // this.getBaseData()
+    this.getBaseData()
   },
   methods: {
     getBaseData() {

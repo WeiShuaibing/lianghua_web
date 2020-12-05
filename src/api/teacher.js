@@ -51,3 +51,9 @@ export function getMyCourseAllInfo() {
     method: 'GET'
   })
 }
+export function getMyMessage() {
+  return request({
+    url: BASE_URL + 'teacher/getMyMessage',
+    method: 'GET'
+  })
+}

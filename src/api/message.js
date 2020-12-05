@@ -23,3 +23,12 @@ export function getAllMessage() {
     method: 'GET'
   })
 }
+export function teaReply(id, reply) {
+  return request({
+    url: BASE_URL + 'message/teaReply',
+    method: 'GET',
+    params: {
+      id, reply
+    }
+  })
+}

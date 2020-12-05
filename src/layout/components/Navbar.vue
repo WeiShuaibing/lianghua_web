@@ -6,8 +6,8 @@
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
-        <span style="font-size: 14px">当前用户：</span>
-        <span style="font-size: 14px;font-weight: 600">{{adminName}}</span>
+        <!--<span style="font-size: 14px">当前用户：</span>
+        <span style="font-size: 14px;font-weight: 600">{{adminName}}</span>-->
         <!--        <search id="header-search" class="right-menu-item" />-->
 
         <!--        <error-log class="errLog-container right-menu-item hover-effect" />-->
@@ -26,9 +26,9 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
-<!--          <router-link to="/profile/index">-->
-<!--            <el-dropdown-item>Profile</el-dropdown-item>-->
-<!--          </router-link>-->
+          <!--          <router-link to="/profile/index">-->
+          <!--            <el-dropdown-item>Profile</el-dropdown-item>-->
+          <!--          </router-link>-->
           <router-link to="/">
             <el-dropdown-item>首页</el-dropdown-item>
           </router-link>
