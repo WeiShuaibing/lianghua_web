@@ -5,7 +5,7 @@
         <el-button type="primary" icon="el-icon-circle-plus-outline" @click="addNew">添加</el-button>
       </el-col>
       <el-col :span="6">
-        <el-input v-model="matchStr" placeholder="请输入关键字搜索学生" class="input-with-select">
+        <el-input v-model="matchStr" placeholder="请输入关键字搜索教师" class="input-with-select">
           <el-button slot="append" icon="el-icon-search" @click="searchTeacher" />
         </el-input>
       </el-col>

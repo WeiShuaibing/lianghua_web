@@ -18,7 +18,7 @@
     <el-row style="margin-top: 30px;">
       <el-table :data="tableData" stripe style="width: 100%">
         <el-table-column prop="student.stuId" label="StudentID" width="180" />
-        <el-table-column prop="student.name" label="姓名"/>
+        <el-table-column prop="student.name" label="姓名" />
         <el-table-column prop="student.phone" label="手机" />
         <el-table-column prop="student.sex" label="性别" width="180" />
         <el-table-column prop="student.age" label="年龄" width="180" />
@@ -26,10 +26,12 @@
         <el-table-column prop="finalScore" label="最终成绩" width="200" />
         <el-table-column prop="score.score" label="成绩" width="280">
           <template slot-scope="scope">
-            <div v-for="(item, index) in scope.row.score" :key="item.id">
-              <div v-if="index === 'score'">
-                <div v-for="i in item" :key="i.scoringId">
-                  {{ i.title }}:{{ i.score }}
+            <div v-if="scope.row.score">
+              <div v-for="(item, index) in scope.row.score" :key="item.id">
+                <div v-if="index === 'score'">
+                  <div v-for="i in item" :key="i.scoringId">
+                    {{ i.title }}:{{ i.score }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -160,7 +162,7 @@ export default {
           })
         }
         console.log('xxx')
-        console.log(this.exportData)
+        console.log(this.tableData)
       })
     },
     getScoringInfo() { // 根据relId获取计分项的信息

@@ -5,9 +5,12 @@
         <el-table-column prop="course.name" label="课程" />
         <el-table-column prop="className" label="成绩">
           <template slot-scope="scope">
-            <div v-for="item in scope.row.score.scoreList" :key="item.scoringId">
-              <div>{{ item.title }}:{{ item.score }}</div>
+            <div v-if="scope.row.score">
+              <div v-for="item in scope.row.score.scoreList" :key="item.scoringId">
+                <div>{{ item.title }}:{{ item.score }}</div>
+              </div>
             </div>
+
           </template>
         </el-table-column>
         <el-table-column prop="course.score" label="学分" width="200" />

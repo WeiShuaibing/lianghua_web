@@ -73,8 +73,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: 'admin',
-        password: '123456'
+        username: '',
+        password: ''
       },
       passwordType: 'password',
       capsTooltip: false,
@@ -201,7 +201,8 @@ export default {
         -webkit-appearance: none;
         border-radius: 0px;
         padding: 12px 5px 12px 15px;
-        color: $light_gray;
+        /*color: $light_gray;*/
+        color: #1f2d3d;
         height: 47px;
         caret-color: $cursor;
 
